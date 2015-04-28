@@ -14,8 +14,10 @@ Requirements to get it working:<br>
 in C:/MinGW-W64/mingw64/x86_64-w64-mingw32/lib<br>
 - Add to compile options the following flags in this order<br>
   -lmingw32 -lSDL2main -lSDL2
-<br>
+<br><br>
+
 Possible CMakeLists:<br>
+```
 cmake_minimum_required(VERSION 3.1)<br>
 project(SDL2Sample1)<br>
 <br>
@@ -28,3 +30,4 @@ add_executable(SDLTestCLion ${SOURCE_FILES})<br>
 <br>
 These steps should work in Linux also. Just replace windows directories with Linux directories.<br>
 <br>
+```
