@@ -5,12 +5,12 @@ Requirements to get it working:
 -MinGW-W64
 -MinGW build of SDL
 -Place SDL2.dll in C:/MinGW-W64/mingw64/bin
--Place 
-  libSDL2.a
-  libSDL2.dll.a
-  libSDL2.la
-  libSDL2_test.a
-  libSDL2main.a
+-Place\n 
+  libSDL2.a\n
+  libSDL2.dll.a\n
+  libSDL2.la\n
+  libSDL2_test.a\n
+  libSDL2main.a\n
 in C:/MinGW-W64/mingw64/x86_64-w64-mingw32/lib
 -Add to compile options the following flags in this order
   -lmingw32 -lSDL2main -lSDL2
