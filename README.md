@@ -6,7 +6,7 @@ Requirements to get it working:
 -MinGW build of SDL
 -Place SDL2.dll in C:/MinGW-W64/mingw64/bin
 -Place\n 
-  libSDL2.a\n
+  libSDL2.a<br>
   libSDL2.dll.a\n
   libSDL2.la\n
   libSDL2_test.a\n
