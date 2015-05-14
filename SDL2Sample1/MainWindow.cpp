@@ -2,7 +2,7 @@
 // Created by Chris on 4/26/2015.
 //
 
-#include "MainWindow.h"
+#include "headers/MainWindow.h"
 #include "ResPath.h"
 
 

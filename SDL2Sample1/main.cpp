@@ -1,11 +1,8 @@
+//#include "headers/MainWindow.h"
 
-
-
-
-#include "MainWindow.h"
-#include "common.h"
-
-//#undef main
+#include <SDL2/SDL.h>
+#include <iostream>
+#include "headers/MainWindow.h"
 
 int main(int argc, char* args[])
 {
