@@ -7,17 +7,18 @@
 #include "../utility/common.h"
 
 
-class Bitmap{
+class BitmapLoader{
 private:
     SDL_Surface *bmp;
     SDL_Texture *texture;
-
+public:
 public:
     /**
      *
      */
-    Bitmap(std::string path);
-    ~Bitmap();
+    BitmapLoader(std::string file, std::string path = ResPath::getBitmapPath());
+    ~BitmapLoader();
+    SDL_Surface* getBitmap(){return bmp;}
 
 };
 

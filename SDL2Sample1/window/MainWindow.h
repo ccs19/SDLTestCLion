@@ -8,14 +8,15 @@
 #include "../utility/common.h"
 
 class MainWindow{
-    //Vars
+
+//Vars
 private:
     SDL_Window *mainWindow;
     SDL_Renderer *renderer;
-    bool isInitialized;
+    bool windowInitialized;
 
-    //Methods
 
+//Methods
 private:
     void initWindow(const char* title);
     void initRenderer();
@@ -25,10 +26,8 @@ public:
     MainWindow(const char* title = "Window");
     ~MainWindow();
     SDL_Window* getWindow();
-
+    bool isInitialized(){return windowInitialized;}
 
 
 };
-
-
 #endif //SDLTESTCLION_MAINWINDOW_H

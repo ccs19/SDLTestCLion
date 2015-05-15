@@ -22,9 +22,9 @@ void MainWindow::initWindow(const char* title){
     if (nullptr == mainWindow){
         std::cout << "SDL_Window creation failed: " << SDL_GetError() << std::endl;
         SDL_Quit();
-        isInitialized = false;
+        windowInitialized = false;
     }
-    else isInitialized = true;
+    else windowInitialized = true;
 }
 
 void MainWindow::initRenderer(){
@@ -32,11 +32,11 @@ void MainWindow::initRenderer(){
                                   SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     if (nullptr == renderer){
-        isInitialized = false;
+        windowInitialized = false;
         SDL_DestroyWindow(mainWindow);
     }
 }
 
-SDL_Window* MainWindow::getWindow() { return this->mainWindow; }
+SDL_Window* MainWindow::getWindow() const { return this->mainWindow; }
 
 
