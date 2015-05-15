@@ -11,5 +11,9 @@ int main(int argc, char* args[])
     }
 
     MainWindow *mainWindow = new MainWindow();
+    SDL_Delay(3000);
+    SDL_DestroyWindow(mainWindow->getWindow());
+
+    std::cout << "Resource path " << ResPath::getResPath();
     return 0;
 }

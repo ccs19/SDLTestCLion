@@ -11,7 +11,7 @@
 
 
 
-class res_path{
+class ResPath{
 
     const static int DEBUG = 1;
     /*
@@ -32,8 +32,10 @@ public:
         //separator than most systems
 #ifdef _WIN32
 		const char PATH_SEP = '\\';
+		const std::string debugRespath = "C:\\";
 #else
         const char PATH_SEP = '/';
+        const std::string debugRespath = "/home/christopher/ClionProjects/SDLTestCLion/res";
 #endif
         //This will hold the base resource path: Lessons/res/
         //We give it static lifetime so that we'll only need to call
@@ -54,9 +56,7 @@ public:
             size_t pos = baseRes.rfind("bin");
             baseRes = baseRes.substr(0, pos) + "res" + PATH_SEP;
         }
-        //If we want a specific subdirectory path in the resource directory
-        //append it to the base path. This would be something like Lessons/res/Lesson0
-        if(DEBUG) return "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\SDL2Sample1\\res\\";
+        if(DEBUG) return debugRespath + subDir + PATH_SEP;
         return subDir.empty() ? baseRes : baseRes + subDir + PATH_SEP;
     }
 };

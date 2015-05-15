@@ -7,5 +7,6 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
+#include "ResPath.h"
 
 #endif //SDLTESTCLION_COMMON_H

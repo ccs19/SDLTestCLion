@@ -12,23 +12,19 @@ class MainWindow{
 private:
     SDL_Window *mainWindow;
     SDL_Renderer *renderer;
-    SDL_Surface *bmp;
-    SDL_Texture *texture;
     bool isInitialized;
 
     //Methods
 
 private:
-    void initWindow(char* title);
+    void initWindow(const char* title);
     void initRenderer();
-    void loadBitmap();
-    void drawBitmap();
     void drawLoop();
-    void initVideo();
 
 public:
-    MainWindow(char* title = "Window");
+    MainWindow(const char* title = "Window");
     ~MainWindow();
+    SDL_Window* getWindow();
 
 
 
