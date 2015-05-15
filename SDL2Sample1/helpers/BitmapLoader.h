@@ -14,11 +14,13 @@ private:
 public:
 public:
     /**
-     *
+     * Object encapsulating an SDL bitmap.
+     * @param file Bitmap file name
+     * @param path Path to bitmap
      */
     BitmapLoader(std::string file, std::string path = ResPath::getBitmapPath());
     ~BitmapLoader();
-    SDL_Surface* getBitmap(){return bmp;}
+    SDL_Surface* getBitmap() {return bmp;}
 
 };
 

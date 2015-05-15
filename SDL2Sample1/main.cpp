@@ -13,14 +13,12 @@ int main(int argc, char* args[])
 
     MainWindow* mainWindow = new MainWindow();
     BitmapLoader* bmp = new BitmapLoader("hello_world.bmp");
-    SDL_Surface* windowSurface = SDL_GetWindowSurface(mainWindow->getWindow());
-
 
     for(int i = 5; i < 10; i++){
-        SDL_BlitSurface(bmp->getBitmap(), NULL, windowSurface, NULL);
+        SDL_BlitSurface(bmp->getBitmap(), NULL, mainWindow->getSurface(), NULL);
         SDL_UpdateWindowSurface(mainWindow->getWindow());
         SDL_Delay(1000);
     }
-    SDL_DestroyWindow(mainWindow->getWindow());
+
     return 0;
 }

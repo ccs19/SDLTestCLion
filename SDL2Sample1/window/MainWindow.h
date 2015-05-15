@@ -12,7 +12,8 @@ class MainWindow{
 //Vars
 private:
     SDL_Window *mainWindow;
-    SDL_Renderer *renderer;
+    SDL_Renderer *mainWindowRenderer;
+    SDL_Surface *mainWindowSurface;
     bool windowInitialized;
 
 
@@ -20,14 +21,22 @@ private:
 private:
     void initWindow(const char* title);
     void initRenderer();
-    void drawLoop();
 
 public:
     MainWindow(const char* title = "Window");
     ~MainWindow();
-    SDL_Window* getWindow();
-    bool isInitialized(){return windowInitialized;}
 
+
+
+    SDL_Window* getWindow()  { return this->mainWindow;}
+    SDL_Renderer* getRenderer()  {return this->mainWindowRenderer;}
+    SDL_Surface* getSurface() {return this->mainWindowSurface;};
+    bool isInitialized() const {return this->windowInitialized;}
+
+    //Resolution
+    void getResolution(int* w, int* h);
+    void setResolution(const int w, const int h);
+    void setFullscreen(bool isFullscreen);
 
 };
 #endif //SDLTESTCLION_MAINWINDOW_H

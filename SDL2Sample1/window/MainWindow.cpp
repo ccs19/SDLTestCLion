@@ -9,12 +9,18 @@
 MainWindow::MainWindow(const char* title){
     initWindow(title);
     initRenderer();
+    //Must call GetWindowSurface AFTER renderer is initialized.
+    mainWindowSurface = SDL_GetWindowSurface(mainWindow);
 }
 
 MainWindow::~MainWindow(){
-    //if (mainWindow != nullptr){
-    //    delete mainWindow;
-    //}
+    SDL_DestroyWindow(mainWindow);
+    SDL_DestroyRenderer(mainWindowRenderer);
+    SDL_FreeSurface(mainWindowSurface);
+    mainWindow = nullptr;
+    mainWindowRenderer = nullptr;
+    mainWindowSurface = nullptr;
+    windowInitialized = false;
 }
 
 void MainWindow::initWindow(const char* title){
@@ -28,15 +34,34 @@ void MainWindow::initWindow(const char* title){
 }
 
 void MainWindow::initRenderer(){
-    renderer = SDL_CreateRenderer(mainWindow, -1,
+    mainWindowRenderer = SDL_CreateRenderer(mainWindow, -1,
                                   SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
-    if (nullptr == renderer){
+    if (nullptr == mainWindowRenderer){
         windowInitialized = false;
         SDL_DestroyWindow(mainWindow);
     }
 }
 
-SDL_Window* MainWindow::getWindow() const { return this->mainWindow; }
+void MainWindow::setResolution(const int width, const int height){
+    if(width <= 0 || height <= 0){
+        std::cout << "Width or height not valid when setting MainWindow resolution" << std::endl;
+        return;
+    }
+    SDL_SetWindowSize(this->mainWindow, width, height);
+    if(nullptr == this->mainWindow){
+        windowInitialized = false;
+        std::cout << "Something bad happened. Failed to set resolution " << SDL_GetError() << std::endl;
+    }
+}
+
+void MainWindow::getResolution(int* width, int* height) {
+    SDL_GetWindowSize(this->mainWindow, width, height);
+}
+
+void MainWindow::setFullscreen(bool isFullscreen) {
+
+}
+
+
 
 
