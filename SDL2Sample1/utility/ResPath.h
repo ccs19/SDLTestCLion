@@ -5,9 +5,10 @@
 #ifndef SDLTESTCLION_RESPATH_H
 #define SDLTESTCLION_RESPATH_H
 
-#include <iostream>
 #include <string>
-#include "headers/common.h"
+#include "../utility/common.h"
+
+
 
 
 class res_path{

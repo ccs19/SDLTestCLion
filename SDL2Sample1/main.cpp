@@ -1,8 +1,7 @@
 //#include "headers/MainWindow.h"
 
-#include <SDL2/SDL.h>
-#include <iostream>
-#include "headers/MainWindow.h"
+#include "utility/common.h"
+#include "window/MainWindow.h"
 
 int main(int argc, char* args[])
 {

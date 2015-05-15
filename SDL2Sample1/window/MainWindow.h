@@ -5,11 +5,9 @@
 #ifndef SDLTESTCLION_MAINWINDOW_H
 #define SDLTESTCLION_MAINWINDOW_H
 
-#include "common.h"
+#include "../utility/common.h"
 
 class MainWindow{
-
-
     //Vars
 private:
     SDL_Window *mainWindow;

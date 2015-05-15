@@ -2,8 +2,8 @@
 // Created by Chris on 4/26/2015.
 //
 
-#include "headers/MainWindow.h"
-#include "ResPath.h"
+#include "MainWindow.h"
+#include "../utility/ResPath.h"
 
 
 MainWindow::MainWindow(){
