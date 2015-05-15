@@ -19,7 +19,7 @@ private:
     //Methods
 
 private:
-    void initWindow();
+    void initWindow(char* title);
     void initRenderer();
     void loadBitmap();
     void drawBitmap();
@@ -27,7 +27,7 @@ private:
     void initVideo();
 
 public:
-    MainWindow();
+    MainWindow(char* title = "Window");
     ~MainWindow();
 
 

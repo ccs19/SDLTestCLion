@@ -6,12 +6,10 @@
 #include "../utility/ResPath.h"
 
 
-MainWindow::MainWindow(){
-    initWindow();
+MainWindow::MainWindow(char* title){
+    initWindow(title);
     initRenderer();
     //initVideo();
-    loadBitmap();
-    drawBitmap();
     drawLoop();
 }
 
@@ -21,24 +19,8 @@ MainWindow::~MainWindow(){
     //}
 }
 
-/**
-void MainWindow::initVideo(){
-    int driverNumber = SDL_GetNumVideoDrivers();
-    for(int i = 0; i < driverNumber; i++) {
-        const char *videoDriver = SDL_GetVideoDriver(i);
-        if(strcmp("windows", videoDriver)== 0){
-            driverNumber = i;
-        }
-    }
-    if(SDL_VideoInit(SDL_GetVideoDriver(driverNumber)) != 0){
-        std::cout << "Failed to initialize video " << SDL_GetError();
-    }
-
-}**/
-
-
-void MainWindow::initWindow(){
-    mainWindow = SDL_CreateWindow("Hello world!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+void MainWindow::initWindow(char* title){
+    mainWindow = SDL_CreateWindow(title, 100, 100, 640, 480, SDL_WINDOW_SHOWN);
     if (nullptr == mainWindow){
         std::cout << "SDL_Window creation failed: " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -72,29 +54,19 @@ void MainWindow::loadBitmap(){
     }
 }
 
-void MainWindow::drawBitmap(){
-    texture = SDL_CreateTextureFromSurface(renderer, bmp);
-    SDL_FreeSurface(bmp);
-    if (texture == nullptr){
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(mainWindow);
-        std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-    }
-}
-
 
 void MainWindow::drawLoop(){
     //A sleepy rendering loop, wait for 3 seconds and render and present the screen each time
-    for (int i = 0; i < 3; ++i){
-        //First clear the renderer
-        SDL_RenderClear(renderer);
-        //Draw the texture
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
-        //Update the screen
-        SDL_RenderPresent(renderer);
-        //Take a quick break after all that hard work
-        SDL_Delay(1000);
+    while(true){
+        //Get window surface
+        auto screenSurface = SDL_GetWindowSurface( this->mainWindow );
+
+        //Fill the surface white
+        SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
+
+        //Update the surface
+        SDL_UpdateWindowSurface( this->mainWindow );
+        SDL_Delay(5000);
     }
 }
 
