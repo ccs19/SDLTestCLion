@@ -2,8 +2,8 @@
 // Created by Chris on 4/26/2015.
 //
 
-#ifndef SDLTESTCLION_MAINWINDOW_H
-#define SDLTESTCLION_MAINWINDOW_H
+#ifndef CCS_MAINWINDOW_H
+#define CCS_MAINWINDOW_H
 
 #include "../utility/common.h"
 
@@ -11,6 +11,7 @@ class MainWindow{
 
 //Vars
 private:
+    getLog("MainWindow")
     SDL_Window *mainWindow;
     SDL_Renderer *mainWindowRenderer;
     SDL_Surface *mainWindowSurface;
@@ -36,7 +37,7 @@ public:
     //Resolution
     void getResolution(int* w, int* h);
     void setResolution(const int w, const int h);
-    void setFullscreen(int flag);
+    void setFullscreen(const Uint32 flag);
 
 };
 #endif //SDLTESTCLION_MAINWINDOW_H

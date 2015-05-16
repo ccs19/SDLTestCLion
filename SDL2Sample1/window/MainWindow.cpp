@@ -3,7 +3,6 @@
 //
 
 #include "MainWindow.h"
-#include "../utility/ResPath.h"
 
 
 MainWindow::MainWindow(const char* title){
@@ -26,9 +25,9 @@ MainWindow::~MainWindow(){
 void MainWindow::initWindow(const char* title){
     mainWindow = SDL_CreateWindow(title, 100, 100, 640, 480, SDL_WINDOW_SHOWN);
     if (nullptr == mainWindow){
-        std::cout << "SDL_Window creation failed: " << SDL_GetError() << std::endl;
         SDL_Quit();
         windowInitialized = false;
+        LOG4CXX_ERROR(logger, "Failed to initialize window" << SDL_GetError())
     }
     else windowInitialized = true;
 }
@@ -39,18 +38,19 @@ void MainWindow::initRenderer(){
     if (nullptr == mainWindowRenderer){
         windowInitialized = false;
         SDL_DestroyWindow(mainWindow);
+        LOG4CXX_ERROR(logger, "Failed to initialize renderer" << SDL_GetError())
     }
 }
 
 void MainWindow::setResolution(const int width, const int height){
     if(width <= 0 || height <= 0){
-        std::cout << "Width or height not valid when setting MainWindow resolution" << std::endl;
+        LOG4CXX_ERROR(logger, "Unable to change resolution " << width << " " << height)
         return;
     }
     SDL_SetWindowSize(this->mainWindow, width, height);
     if(nullptr == this->mainWindow){
         windowInitialized = false;
-        std::cout << "Something bad happened. Failed to set resolution " << SDL_GetError() << std::endl;
+        LOG4CXX_ERROR(logger, "Failed to change resolution " << SDL_GetError());
     }
 }
 
@@ -63,7 +63,7 @@ void MainWindow::getResolution(int* width, int* height) {
  * SDL_WINDOW_FULLSCREEN - True full screen
  * SDL_WINDOW_FULLSCREEN_DESKTOP - Full screen window
  */
-void MainWindow::setFullscreen(int flag) {
+void MainWindow::setFullscreen(const Uint32 flag) {
     SDL_SetWindowFullscreen(this->mainWindow, flag);
 }
 

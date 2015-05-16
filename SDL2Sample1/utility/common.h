@@ -2,8 +2,8 @@
 // Created by christopher on 5/13/15.
 //
 
-#ifndef SDLTESTCLION_COMMON_H
-#define SDLTESTCLION_COMMON_H
+#ifndef CCS_COMMON_H
+#define CCS_COMMON_H
 
 /**Common libs**/
 #include <iostream>
@@ -40,4 +40,4 @@ enum KeyPressSurfaces
 
 /*******************/
 
-#endif //SDLTESTCLION_COMMON_H
+#endif //CCS_COMMON_H
