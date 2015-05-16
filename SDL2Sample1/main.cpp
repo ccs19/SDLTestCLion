@@ -3,6 +3,10 @@
 #include "utility/common.h"
 #include "window/MainWindow.h"
 #include "helpers/BitmapLoader.h"
+#include "core/GameLoop.h"
+
+
+log4cxx::LoggerPtr logger(log4cxx::Logger::getLogger("main"));
 
 int main(int argc, char* args[])
 {
@@ -11,14 +15,8 @@ int main(int argc, char* args[])
         return 1;
     }
 
-    MainWindow* mainWindow = new MainWindow();
-    BitmapLoader* bmp = new BitmapLoader("hello_world.bmp");
-
-    for(int i = 5; i < 10; i++){
-        SDL_BlitSurface(bmp->getBitmap(), NULL, mainWindow->getSurface(), NULL);
-        SDL_UpdateWindowSurface(mainWindow->getWindow());
-        SDL_Delay(1000);
-    }
+    LOG4CXX_DEBUG(logger, "message");
+//    new GameLoop();
 
     return 0;
 }

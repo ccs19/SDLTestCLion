@@ -36,7 +36,7 @@ public:
     //Resolution
     void getResolution(int* w, int* h);
     void setResolution(const int w, const int h);
-    void setFullscreen(bool isFullscreen);
+    void setFullscreen(int flag);
 
 };
 #endif //SDLTESTCLION_MAINWINDOW_H

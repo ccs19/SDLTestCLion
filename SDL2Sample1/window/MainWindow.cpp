@@ -58,8 +58,13 @@ void MainWindow::getResolution(int* width, int* height) {
     SDL_GetWindowSize(this->mainWindow, width, height);
 }
 
-void MainWindow::setFullscreen(bool isFullscreen) {
-
+/**
+ * 0 - Windowed
+ * SDL_WINDOW_FULLSCREEN - True full screen
+ * SDL_WINDOW_FULLSCREEN_DESKTOP - Full screen window
+ */
+void MainWindow::setFullscreen(int flag) {
+    SDL_SetWindowFullscreen(this->mainWindow, flag);
 }
 
 
