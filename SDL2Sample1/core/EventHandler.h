@@ -4,9 +4,19 @@
 
 #ifndef SDLTESTCLION_EVENTHANDLER_H
 #define SDLTESTCLION_EVENTHANDLER_H
+#include "../utility/common.h"
 
 
 class EventHandler {
+private:
+    getLog("EventHandler")
+
+public:
+
+private:
+
+public:
+
 
 };
 

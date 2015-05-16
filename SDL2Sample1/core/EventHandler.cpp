@@ -3,3 +3,7 @@
 //
 
 #include "EventHandler.h"
+
+using namespace log4cxx;
+
+

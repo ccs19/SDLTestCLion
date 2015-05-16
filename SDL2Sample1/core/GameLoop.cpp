@@ -6,7 +6,6 @@
 #include "GameLoop.h"
 
 using namespace log4cxx;
-LoggerPtr logger = Logger::getLogger("GameLoop");
 
  GameLoop::GameLoop(){
      LOG4CXX_DEBUG(logger, "Entering GameLoop")

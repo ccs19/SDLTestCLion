@@ -22,7 +22,7 @@ int main(int argc, char* args[])
     }
 
     LOG4CXX_DEBUG(logger,"Debug message test");
-    new GameLoop();
-
+    GameLoop* loop = new GameLoop();
+    delete(loop);
     return 0;
 }

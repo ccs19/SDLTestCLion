@@ -20,6 +20,9 @@
 #include <log4cxx/patternlayout.h>
 /****************/
 
+/**Log define**/
+#define getLog(name) log4cxx::LoggerPtr logger = log4cxx::Logger::getLogger(name);
+
 /**keyboard enums**/
 //Key press surfaces constants
 

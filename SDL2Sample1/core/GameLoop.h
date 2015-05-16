@@ -17,6 +17,7 @@ private:
     BitmapLoader* bmp;
     bool quit;
     std::mutex quitLock;
+    getLog("GameLoop")
 
 
 public:
