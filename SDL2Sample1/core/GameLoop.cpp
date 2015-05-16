@@ -2,16 +2,22 @@
 // Created by christopher on 5/15/15.
 //
 
+
 #include "GameLoop.h"
 
+using namespace log4cxx;
+LoggerPtr logger = Logger::getLogger("GameLoop");
 
  GameLoop::GameLoop(){
-    bool quit = false;
-    SDL_Event e;
-    mainWindow = new MainWindow();
-    bmp = new BitmapLoader("hello_world.bmp");
+     LOG4CXX_DEBUG(logger, "Entering GameLoop")
 
-    while(!quit){
+
+     bool quit = false;
+     SDL_Event e;
+     mainWindow = new MainWindow();
+     bmp = new BitmapLoader("hello_world.bmp");
+
+     while(!quit){
         while(SDL_PollEvent(&e) != 0){
             if(e.type == SDL_QUIT){
                 quit = true;
@@ -19,9 +25,14 @@
         }
         SDL_BlitSurface(bmp->getBitmap(), NULL, mainWindow->getSurface(), NULL);
         SDL_UpdateWindowSurface(mainWindow->getWindow());
-    }
+     }
+
+
+     LOG4CXX_DEBUG(logger, "Exited GameLoop")
 }
 
-void GameLoop::quitGame(bool quitGame) {
+void inline GameLoop::quitGame(bool quitGame) {
+    quitLock.lock();
     quit = quitGame;
+    quitLock.unlock();
 }

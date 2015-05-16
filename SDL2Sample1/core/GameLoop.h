@@ -8,7 +8,7 @@
 #include "../utility/common.h"
 #include "../window/MainWindow.h"
 #include "../helpers/BitmapLoader.h"
-
+#include <mutex>
 
 class GameLoop {
 
@@ -16,12 +16,14 @@ private:
     MainWindow* mainWindow;
     BitmapLoader* bmp;
     bool quit;
+    std::mutex quitLock;
 
 
 public:
     GameLoop();
-    void quitGame(bool quitGame);
 
+    //Setter to quit game
+    void quitGame(bool quitGame);
 };
 
 
