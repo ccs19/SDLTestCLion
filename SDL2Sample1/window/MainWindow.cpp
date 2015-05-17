@@ -38,19 +38,19 @@ void MainWindow::initRenderer(){
     if (nullptr == mainWindowRenderer){
         windowInitialized = false;
         SDL_DestroyWindow(mainWindow);
-        LOG4CXX_ERROR(logger, "Failed to initialize renderer" << SDL_GetError())
+        //LOG4CXX_ERROR(logger, "Failed to initialize renderer" << SDL_GetError())
     }
 }
 
 void MainWindow::setResolution(const int width, const int height){
     if(width <= 0 || height <= 0){
-        LOG4CXX_ERROR(logger, "Unable to change resolution " << width << " " << height)
+        //LOG4CXX_ERROR(logger, "Unable to change resolution " << width << " " << height)
         return;
     }
     SDL_SetWindowSize(this->mainWindow, width, height);
     if(nullptr == this->mainWindow){
         windowInitialized = false;
-        LOG4CXX_ERROR(logger, "Failed to change resolution " << SDL_GetError());
+        //LOG4CXX_ERROR(logger, "Failed to change resolution " << SDL_GetError());
     }
 }
 

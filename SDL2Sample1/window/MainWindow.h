@@ -6,12 +6,14 @@
 #define CCS_MAINWINDOW_H
 
 #include "../utility/common.h"
+#include "../core/GameLoop.h"
 
+
+class GameLoop;
 class MainWindow{
 
 //Vars
 private:
-    getLog("MainWindow")
     SDL_Window *mainWindow;
     SDL_Renderer *mainWindowRenderer;
     SDL_Surface *mainWindowSurface;
@@ -24,7 +26,7 @@ private:
     void initRenderer();
 
 public:
-    MainWindow(const char* title = "Window");
+    MainWindow(const char* title);
     ~MainWindow();
 
 

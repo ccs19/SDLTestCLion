@@ -12,16 +12,11 @@
 /***************/
 
 /**Logging libs**/
-#include <log4cxx/logger.h>
-#include <log4cxx/basicconfigurator.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/ndc.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/patternlayout.h>
+
 /****************/
 
 /**Log define**/
-#define getLog(name) log4cxx::LoggerPtr logger = log4cxx::Logger::getLogger(name);
+//#define getLog(name) log4cxx::LoggerPtr logger = log4cxx::Logger::getLogger(name);
 
 /**keyboard enums**/
 //Key press surfaces constants

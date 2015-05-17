@@ -10,11 +10,10 @@
 #include "../helpers/BitmapLoader.h"
 #include <mutex>
 
-
+class MainWindow;
 class GameLoop {
 
 private:
-    getLog("GameLoop")
     MainWindow* mainWindow;
     BitmapLoader* bmp;
     bool quit;
