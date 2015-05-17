@@ -10,7 +10,6 @@
     // LOG4CXX_DEBUG(logger, "Initializing GameLoop")
 
      bool quit = false;
-     SDL_Event e;
      mainWindow = new MainWindow("Super Mega Failure");
      bmp = new BitmapLoader("hello_world.bmp");
      EventHandler* eventHandler = new EventHandler(this);

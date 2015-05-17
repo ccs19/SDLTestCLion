@@ -27,7 +27,7 @@ void MainWindow::initWindow(const char* title){
     if (nullptr == mainWindow){
         SDL_Quit();
         windowInitialized = false;
-        LOG4CXX_ERROR(logger, "Failed to initialize window" << SDL_GetError())
+//        LOG4CXX_ERROR(logger, "Failed to initialize window" << SDL_GetError())
     }
     else windowInitialized = true;
 }

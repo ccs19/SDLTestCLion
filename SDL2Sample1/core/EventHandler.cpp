@@ -39,7 +39,7 @@ int EventHandler::handleEvent(SDL_Event& event){
         return 1;
     }
     else{
-
+        return 0;
     }
 }
 
