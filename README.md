@@ -31,3 +31,7 @@ add_executable(SDLTestCLion ${SOURCE_FILES})
 ```
 <br>
 These steps should work in Linux also. Just replace windows directories with Linux directories.
+
+
+Extra Note:
+The above CMakeLists.txt doesn't work. the SDL_Flags must be set before this point. They work if they're set in the CMAKE_CXX_STANDARD_LIBRARIES portion of the CMake cache.
