@@ -23,7 +23,8 @@ project(SDL2Sample1)
 
 set(SDL_FLAGS "-lmingw32 -lSDL2main -lSDL2")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} )
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SDL_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} ${SDL_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES main.cpp MainWindow.cpp)
 add_executable(SDLTestCLion ${SOURCE_FILES})
@@ -31,7 +32,3 @@ add_executable(SDLTestCLion ${SOURCE_FILES})
 ```
 <br>
 These steps should work in Linux also. Just replace windows directories with Linux directories.
-
-
-Extra Note:
-The above CMakeLists.txt doesn't work. the SDL_Flags must be set before this point. They work if they're set in the CMAKE_CXX_STANDARD_LIBRARIES portion of the CMake cache.
