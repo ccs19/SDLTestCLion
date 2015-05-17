@@ -15,7 +15,7 @@ class ResPath{
  private:
     #ifdef _WIN32
 		#define PATH_SEP '\\'
-		#define debugRespath "C:\\"
+		#define debugRespath "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\res\\"
         #define LOGGER_PROPERTIES "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\res\\logger\\log.properties"
     #else
         #define PATH_SEP '/'
