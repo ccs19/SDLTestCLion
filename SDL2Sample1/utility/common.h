@@ -22,7 +22,7 @@
 /****************/
 
 /**Log define**/
-//#define getLog(name) log4cxx::LoggerPtr logger = log4cxx::Logger::getLogger(name);
+#define getLog(name) log4cpp::Category& logger = log4cpp::Category::getInstance(std::string(name));
 
 /**keyboard enums**/
 //Key press surfaces constants
