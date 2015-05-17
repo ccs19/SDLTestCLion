@@ -6,8 +6,10 @@
 #include "GameLoop.h"
 #include "EventHandler.h"
 
+
+
  GameLoop::GameLoop(){
-    // LOG4CXX_DEBUG(logger, "Initializing GameLoop")
+     logger.debug("Initializing GameLoop");
 
      bool quit = false;
      mainWindow = new MainWindow("Super Mega Failure");
@@ -18,7 +20,7 @@
         SDL_BlitSurface(bmp->getBitmap(), NULL, mainWindow->getSurface(), NULL);
         SDL_UpdateWindowSurface(mainWindow->getWindow());
      }
-     //LOG4CXX_DEBUG(logger, "Exited GameLoop")
+     logger.debug("Exited GameLoop");
 };
 
 void GameLoop::quitGame(bool quitGame) {

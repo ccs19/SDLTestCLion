@@ -2,8 +2,8 @@
 
 #include "utility/common.h"
 #include "core/GameLoop.h"
-
 #include "log4cpp/PropertyConfigurator.hh"
+
 int main(int argc, char* args[])
 {
     //Init logger

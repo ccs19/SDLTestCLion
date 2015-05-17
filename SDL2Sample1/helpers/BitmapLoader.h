@@ -9,6 +9,7 @@
 
 class BitmapLoader{
 private:
+    getLog("BitmapLoader")
     SDL_Surface *bmp;
     SDL_Texture *texture;
 public:

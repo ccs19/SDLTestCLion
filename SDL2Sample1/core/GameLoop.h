@@ -14,12 +14,11 @@ class MainWindow;
 class GameLoop {
 
 private:
+    getLog("GameLoop")
     MainWindow* mainWindow;
     BitmapLoader* bmp;
     bool quit;
     std::mutex quitLock;
-
-
 
 public:
     GameLoop();

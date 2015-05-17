@@ -9,7 +9,7 @@
 #include "EventHandler.h"
 
 EventHandler::EventHandler(GameLoop* loop) {
-    //LOG4CXX_DEBUG(logger, "Initializing EventHandler");
+    logger.debug("Initializing EventHandler");
     gameLoop = loop;
     //eventThread(startLoop());
 }
@@ -22,7 +22,7 @@ void EventHandler::destroyHandler(){
 }
 
 void EventHandler::startLoop(){
-    //LOG4CXX_DEBUG(logger, "EventHandler loop startec");
+    logger.debug("EventHandler loop started");
 
     SDL_Event event;
     int result;
@@ -30,7 +30,7 @@ void EventHandler::startLoop(){
         result = handleEvent(event);
         if(result == 1) break;
     }
-    //LOG4CXX_DEBUG(logger,"Exited EventHandler");
+    logger.debug("Exited EventHandler");
 }
 
 int EventHandler::handleEvent(SDL_Event& event){
