@@ -2,11 +2,16 @@ cmake_minimum_required(VERSION 3.1)
 project(SDL2Sample1)
 
 
-IF(WIN32)
-#boost location
+
+#BOOST STUFF
 SET(BOOST_DIR "C:\\boost_1_58_0\\")
-SET(CMAKE_INCLUDE_PATH "${CMAKE_INCLUDE_PATH} C:\\boost_1_58_0\\")
-SET(CMAKE_LIBRARY_PATH "${CMAKE_LIBRARY_PATH} C:\\boost_1_58_0\\")
+link_directories($BOOST_DIR)
+find_package( Boost 1.58.0
+    COMPONENTS thread system
+    )
+
+
+IF(WIN32)
 
 #logging flags
 SET(LOGGING_FLAGS "-llog4cpp -lws2_32")
@@ -14,7 +19,6 @@ SET(LOGGING_FLAGS "-llog4cpp -lws2_32")
 #SDL variables
 set(SDL_FLAGS "-lmingw32 -lSDL2main -lSDL2")
 set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} ${SDL_FLAGS} ${LOGGING_FLAGS}")
-
 ELSE()
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${SDL2Sample1_SOURCE_DIR}/CMake")
 find_package(SDL2 REQUIRED)
@@ -22,13 +26,13 @@ find_package(SDL2_Image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 #link_libraries(-llog4cxx)
 ENDIF()
-INCLUDE_DIRECTORIES(${BOOST_DIR})
 
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\output")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_executable(SDLTestCLion ${SOURCE_FILES}  utility/common.h helpers/BitmapLoader.h helpers/BitmapLoader.cpp
 core/GameLoop.cpp core/GameLoop.h window/MainWindow.cpp window/MainWindow.h core/EventHandler.cpp core/EventHandler.h main.cpp)
-
+if(Boost_FOUND)
+endif()
 
 
 IF(WIN32)

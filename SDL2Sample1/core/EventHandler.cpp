@@ -2,22 +2,22 @@
 // Created by christopher on 5/15/15.
 //
 
-//#include <mingw.thread.h>
-#include <functional>
-#include <mingw.thread.h>
 
-#include "GameLoop.h"
 
 #include "GameLoop.h"
 #include "EventHandler.h"
+
 EventHandler::EventHandler(GameLoop* loop) {
     logger.debug("Initializing EventHandler");
     gameLoop = loop;
     //std::thread t{startLoop};
+    //boost::thread t (boost::bind(&startLoop));
 }
 
 
 EventHandler::~EventHandler(){}
+
+
 
 void EventHandler::destroyHandler(){
     quit = true;

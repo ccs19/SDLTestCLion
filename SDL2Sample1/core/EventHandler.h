@@ -15,7 +15,6 @@ private:
     getLog("EventHandler")
     bool quit;
     GameLoop* gameLoop;
-    std::thread eventThread;
 
 public:
 
