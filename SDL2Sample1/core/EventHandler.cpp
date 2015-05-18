@@ -2,16 +2,18 @@
 // Created by christopher on 5/15/15.
 //
 
-#include <thread>
+//#include <mingw.thread.h>
+#include <functional>
+#include <mingw.thread.h>
+
 #include "GameLoop.h"
 
 #include "GameLoop.h"
 #include "EventHandler.h"
-
 EventHandler::EventHandler(GameLoop* loop) {
     logger.debug("Initializing EventHandler");
     gameLoop = loop;
-    //eventThread(startLoop());
+    //std::thread t{startLoop};
 }
 
 

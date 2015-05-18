@@ -10,6 +10,7 @@
 #include "EventHandler.h"
 
 class EventHandler {
+/**vars**/
 private:
     getLog("EventHandler")
     bool quit;

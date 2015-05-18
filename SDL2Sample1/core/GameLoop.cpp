@@ -14,7 +14,7 @@
      bool quit = false;
      mainWindow = new MainWindow("Super Mega Failure");
      bmp = new BitmapLoader("hello_world.bmp");
-     EventHandler* eventHandler = new EventHandler(this);
+     EventHandler eventHandler(this);
 
      while(!quit){
         SDL_BlitSurface(bmp->getBitmap(), NULL, mainWindow->getSurface(), NULL);
