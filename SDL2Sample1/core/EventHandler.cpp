@@ -6,12 +6,12 @@
 
 #include "GameLoop.h"
 #include "EventHandler.h"
+#include <thread>
 
 EventHandler::EventHandler(GameLoop* loop) {
     logger.debug("Initializing EventHandler");
     gameLoop = loop;
-    //std::thread t{startLoop};
-    //boost::thread t (boost::bind(&startLoop));
+    std::thread t(&EventHandler::startLoop, *this);
 }
 
 

@@ -6,10 +6,10 @@
 #include "SDL2/SDL_thread.h"
 #include <thread>
 
-int threadTest(){
+int threadTest(GameLoop* loop){
     std::cout << "This is a thread";
     SDL_Delay(5000);
- //   loop->quitGame(true);
+    loop->quitGame(true);
 }
 
 int main(int argc, char* args[])
@@ -18,7 +18,7 @@ int main(int argc, char* args[])
     getLog("main");
     logger.debug("Do it wekred?");
     GameLoop* loop;
-    std::thread t(threadTest);
+    std::thread t(threadTest, loop);
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
