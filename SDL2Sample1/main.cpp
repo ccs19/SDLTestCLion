@@ -3,27 +3,21 @@
 #include "utility/common.h"
 #include "core/GameLoop.h"
 #include "log4cpp/PropertyConfigurator.hh"
+#include <boost/any.hpp>
 
 
-/**void testBoost(){
-    std::string line;
-    boost::regex pat( "^Subject: (Re: |Aw: )*(.*)" );
-
-    while (std::cin)
-    {
-        std::getline(std::cin, line);
-        boost::smatch matches;
-        if (boost::regex_match(line, matches, pat))
-            std::cout << matches[2] << std::endl;
-    }
-}**/
+void testBoost(){
+    boost::any a(5);
+    a = 7.67;
+    std::cout<<boost::any_cast<double>(a)<<std::endl;
+}
 
 
 int main(int argc, char* args[])
 {
 
 
-//    testBoost();
+    testBoost();
     //Init logger
     log4cpp::PropertyConfigurator::configure(LOGGER_PROPERTIES);
     getLog("main");

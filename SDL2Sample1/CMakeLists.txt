@@ -4,6 +4,7 @@ project(SDL2Sample1)
 
 IF(WIN32)
 #boost location
+SET(BOOST_DIR "C:\\boost_1_58_0\\")
 SET(CMAKE_INCLUDE_PATH "${CMAKE_INCLUDE_PATH} C:\\boost_1_58_0\\")
 SET(CMAKE_LIBRARY_PATH "${CMAKE_LIBRARY_PATH} C:\\boost_1_58_0\\")
 
@@ -21,6 +22,8 @@ find_package(SDL2_Image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 #link_libraries(-llog4cxx)
 ENDIF()
+INCLUDE_DIRECTORIES(${BOOST_DIR})
+
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\output")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_executable(SDLTestCLion ${SOURCE_FILES}  utility/common.h helpers/BitmapLoader.h helpers/BitmapLoader.cpp
