@@ -7,7 +7,8 @@
 
 #include "../utility/common.h"
 #include "GameLoop.h"
-#include "EventHandler.h"
+
+
 
 class EventHandler {
 /**vars**/
@@ -15,12 +16,14 @@ private:
     getLog("EventHandler")
     bool quit;
     GameLoop* gameLoop;
+    std::thread* t;
 
 public:
 
 
     /**Methods**/
 private:
+    void print();
 
 public:
     EventHandler(GameLoop* loop);

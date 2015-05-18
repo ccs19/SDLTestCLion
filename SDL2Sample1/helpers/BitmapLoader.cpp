@@ -12,5 +12,10 @@ BitmapLoader::BitmapLoader(std::string file, std::string path){
     }
 }
 
+BitmapLoader::~BitmapLoader() {
+    SDL_FreeSurface(bmp);
+    logger.debug("Destroying BitmapLoader");
+}
+
 
 

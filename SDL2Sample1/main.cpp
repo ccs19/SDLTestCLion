@@ -3,7 +3,6 @@
 #include "utility/common.h"
 #include "core/GameLoop.h"
 #include "log4cpp/PropertyConfigurator.hh"
-#include "SDL2/SDL_thread.h"
 #include <thread>
 
 int threadTest(GameLoop* loop){
@@ -18,17 +17,14 @@ int main(int argc, char* args[])
     getLog("main");
     logger.debug("Do it wekred?");
     GameLoop* loop;
-    std::thread t(threadTest, loop);
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
     }
     loop = new GameLoop();
-    loop->isLoopRunning();
 
-
-
+    logger.debug("Leaving main");
     return 0;
 }
 

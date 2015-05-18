@@ -12,14 +12,16 @@
      logger.debug("Initializing GameLoop");
 
      bool quit = false;
-     mainWindow = new MainWindow("Super Mega Failure");
-     bmp = new BitmapLoader("hello_world.bmp");
+     MainWindow mainWindow("Super Mega Failure");
+     BitmapLoader bmp("hello_world.bmp");
      EventHandler eventHandler(this);
 
      while(!quit){
-        SDL_BlitSurface(bmp->getBitmap(), NULL, mainWindow->getSurface(), NULL);
-        SDL_UpdateWindowSurface(mainWindow->getWindow());
+        SDL_BlitSurface(bmp.getBitmap(), NULL, mainWindow.getSurface(), NULL);
+        SDL_UpdateWindowSurface(mainWindow.getWindow());
      }
+
+     eventHandler.destroyHandler();
      logger.debug("Exited GameLoop");
 };
 

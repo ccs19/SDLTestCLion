@@ -6,21 +6,25 @@
 
 #include "GameLoop.h"
 #include "EventHandler.h"
-#include <thread>
 
 EventHandler::EventHandler(GameLoop* loop) {
     logger.debug("Initializing EventHandler");
     gameLoop = loop;
-    std::thread t(&EventHandler::startLoop, *this);
+    //t = std::thread(&EventHandler::print, *this);
+    t = new std::thread(&EventHandler::startLoop, *this);
 }
 
 
-EventHandler::~EventHandler(){}
+EventHandler::~EventHandler(){
 
+}
 
+void EventHandler::print(){
+    logger.debug("OMG OMG OMG facepalm");
+}
 
 void EventHandler::destroyHandler(){
-    quit = true;
+    t->join();
 }
 
 void EventHandler::startLoop(){

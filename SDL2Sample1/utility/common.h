@@ -21,6 +21,8 @@
 #include "log4cpp/Priority.hh"
 /****************/
 
+#include <thread>
+
 /**Log define**/
 #define getLog(name) log4cpp::Category& logger = log4cpp::Category::getInstance(std::string(name));
 
