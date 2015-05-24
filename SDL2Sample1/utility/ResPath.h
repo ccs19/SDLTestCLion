@@ -13,10 +13,19 @@
 
 class ResPath{
  private:
+    #define DESKTOP 0 //If I'm on my desktop
     #ifdef _WIN32
 		#define PATH_SEP '\\'
-		#define debugRespath "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\res\\"
+
+        #if(DESKTOP)
+        #define debugRespath "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\res\\"
         #define LOGGER_PROPERTIES "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\res\\logger\\log.properties"
+        #else
+        #define debugRespath "C:\\ClionProjects\\SDLTestCLion\\res\\"
+        #define LOGGER_PROPERTIES "C:\\ClionProjects\\SDLTestCLion\\res\\logger\\log.properties"
+        #endif
+
+
     #else
         #define PATH_SEP '/'
         #define debugRespath "/home/christopher/ClionProjects/SDLTestCLion/res"
