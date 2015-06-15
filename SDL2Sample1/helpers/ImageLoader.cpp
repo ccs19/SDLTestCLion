@@ -41,7 +41,7 @@ void ImageLoader::loadImage(std::string file, std::string path) {
     }
 }
 
-SDL_Surface* ImageLoader::getBitmap() {return optimizedSurface;}
+SDL_Surface* ImageLoader::getSurface() {return optimizedSurface;}
 
 bool ImageLoader::imageLoaded() {return success;}
 

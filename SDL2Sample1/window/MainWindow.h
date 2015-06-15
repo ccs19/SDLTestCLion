@@ -20,12 +20,13 @@ private:
     bool windowInitialized;
 
     void initWindow(const char* title);
-    void initRenderer();
+
 
 public:
     MainWindow(const char* title);
     ~MainWindow();
 
+    void initRenderer(SDL_Color* color);
     SDL_Window* getWindow();
     SDL_Renderer* getRenderer();
     SDL_Surface* getSurface();

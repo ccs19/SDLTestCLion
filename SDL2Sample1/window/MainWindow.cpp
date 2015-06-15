@@ -7,15 +7,14 @@
 getLog("MainWindow")
 MainWindow::MainWindow(const char* title){
     initWindow(title);
-    initRenderer();
+    this->mainWindowRenderer = nullptr;
     //Must call GetWindowSurface AFTER renderer is initialized.
     mainWindowSurface = SDL_GetWindowSurface(mainWindow);
 }
 
 MainWindow::~MainWindow(){
     SDL_DestroyWindow(mainWindow);
-    SDL_DestroyRenderer(mainWindowRenderer);
-    SDL_FreeSurface(mainWindowSurface);
+    if(mainWindowRenderer != nullptr)SDL_DestroyRenderer(mainWindowRenderer);
     IMG_Quit();
     SDL_Quit();
     mainWindow = nullptr;
@@ -36,7 +35,10 @@ void MainWindow::initWindow(const char* title){
     else this->windowInitialized = true;
 }
 
-void MainWindow::initRenderer(){
+/**
+ * Initialize renderer with a specific color
+ */
+void MainWindow::initRenderer(SDL_Color* color){
     logger.debug("Initializing MainWindow Renderer");
     mainWindowRenderer = SDL_CreateRenderer(this->mainWindow, -1,
                                   SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -44,6 +46,11 @@ void MainWindow::initRenderer(){
         this->windowInitialized = false;
         SDL_DestroyWindow(mainWindow);
         logger.error("Failed to initialize renderer. SDL Error: %s", SDL_GetError());
+    }
+    else{//Else we've successfully created the renderer
+        //Draw color
+        //Renderer, R, G, B, A
+        SDL_SetRenderDrawColor(this->mainWindowRenderer, color->r, color->g, color->b, color->a);
     }
 }
 

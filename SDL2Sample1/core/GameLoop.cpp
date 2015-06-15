@@ -21,11 +21,12 @@ GameLoop::GameLoop(){
                 quit = true;
             }
         }
-        SDL_BlitSurface(bmp.getBitmap(), NULL, mainWindow.getSurface(), NULL);
+        SDL_BlitSurface(bmp.getSurface(), NULL, mainWindow.getSurface(), NULL);
         SDL_UpdateWindowSurface(mainWindow.getWindow());
+
      }
 
-     logger.debug("Successfully Exited GameLoop");
+     logger.debug("Exited GameLoop");
 }
 
 

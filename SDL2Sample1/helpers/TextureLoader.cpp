@@ -10,7 +10,7 @@ TextureLoader::TextureLoader(const std::string file, const std::string path, SDL
     logger.debug("Creating texture from file: %s%s", path.c_str(), file.c_str());
     ImageLoader image(file, path);
     if(image.imageLoaded()){
-        loadedTexture = SDL_CreateTextureFromSurface(renderer, image.getBitmap());
+        loadedTexture = SDL_CreateTextureFromSurface(renderer, image.getSurface());
         if(loadedTexture == nullptr){
             logger.error("Failed to create texture %s%s. SDL Error: %s", path.c_str(), file.c_str(), SDL_GetError());
             success = false;
