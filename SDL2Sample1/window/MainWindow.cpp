@@ -68,9 +68,12 @@ void MainWindow::setResolution(const int width, const int height){
 
 /**
  * Puts current resolution in int pointers.
+ * Note: This function accepts pointers, but memory must already be allocated.
  */
 void MainWindow::getResolution(int* width, int* height) {
+    logger.debug("Getting window size");
     SDL_GetWindowSize(this->mainWindow, width, height);
+    logger.debug("Returning window size %dx%d", *width, *height);
 }
 
 
