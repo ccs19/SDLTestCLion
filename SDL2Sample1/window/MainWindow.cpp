@@ -8,7 +8,6 @@ getLog("MainWindow")
 MainWindow::MainWindow(const char* title){
     initWindow(title);
     this->mainWindowRenderer = nullptr;
-    //Must call GetWindowSurface AFTER renderer is initialized.
     mainWindowSurface = SDL_GetWindowSurface(mainWindow);
 }
 

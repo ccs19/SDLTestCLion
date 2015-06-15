@@ -16,10 +16,11 @@ private:
     SDL_Texture *loadedTexture;
     bool success = false;
     void loadTexture(std::string file, std::string path);
-    ~TextureLoader();
+
 
 public:
     TextureLoader(std::string file, std::string path, SDL_Renderer* renderer);
+    ~TextureLoader();
     bool textureLoaded();
     SDL_Texture* getTexture();
 };
