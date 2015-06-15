@@ -7,6 +7,7 @@
 
 
 #include "../utility/common.h"
+#include "ImageLoader.h"
 
 class TextureLoader {
 
@@ -18,9 +19,9 @@ private:
     ~TextureLoader();
 
 public:
-    TextureLoader(std::string file, std::string path);
+    TextureLoader(std::string file, std::string path, SDL_Renderer* renderer);
     bool textureLoaded();
-
+    SDL_Texture* getTexture();
 };
 
 
