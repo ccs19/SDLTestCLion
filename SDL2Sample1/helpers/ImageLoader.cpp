@@ -33,7 +33,6 @@ ImageLoader::~ImageLoader() {
 
 void ImageLoader::loadImage(std::string file, std::string path) {
     std::string fullPath = path + file;
-    logger.info("Attempting to open image %s", fullPath.c_str());
     this->loadedSurface = IMG_Load(fullPath.c_str());
     success = true;
     if(this->loadedSurface == nullptr){

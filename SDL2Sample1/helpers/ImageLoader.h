@@ -7,10 +7,9 @@
 #include "../utility/common.h"
 class ImageLoader{
 private:
-    getLog("BitmapLoader")
+    getLog("ImageLoader")
     SDL_Surface *loadedSurface;
     SDL_Surface *optimizedSurface;
-    SDL_Texture *texture;
     bool success;
 
     void loadImage(std::string file, std::string path);
