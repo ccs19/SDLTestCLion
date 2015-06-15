@@ -12,7 +12,7 @@ TextureLoader::TextureLoader(const std::string file, const std::string path, SDL
     if(image.imageLoaded()){
         loadedTexture = SDL_CreateTextureFromSurface(renderer, image.getBitmap());
         if(loadedTexture == nullptr){
-            logger.error("Failed to create texture %s%s. Error: %s", path.c_str(), file.c_str(), SDL_GetError());
+            logger.error("Failed to create texture %s%s. SDL Error: %s", path.c_str(), file.c_str(), SDL_GetError());
             success = false;
         }
     }
@@ -23,7 +23,7 @@ TextureLoader::TextureLoader(const std::string file, const std::string path, SDL
 }
 
 TextureLoader::~TextureLoader(){
-    logger.debug("Destroying texture");
+    logger.debug("TextureLoader destroyed");
     SDL_DestroyTexture(loadedTexture);
 }
 

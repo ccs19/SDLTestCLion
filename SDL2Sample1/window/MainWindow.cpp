@@ -16,6 +16,8 @@ MainWindow::~MainWindow(){
     SDL_DestroyWindow(mainWindow);
     SDL_DestroyRenderer(mainWindowRenderer);
     SDL_FreeSurface(mainWindowSurface);
+    IMG_Quit();
+    SDL_Quit();
     mainWindow = nullptr;
     mainWindowRenderer = nullptr;
     mainWindowSurface = nullptr;
@@ -26,42 +28,44 @@ MainWindow::~MainWindow(){
 void MainWindow::initWindow(const char* title){
     logger.debug("Initializing MainWindow");
     mainWindow = SDL_CreateWindow(title, 100, 100, 640, 480, SDL_WINDOW_SHOWN);
-    if (nullptr == mainWindow){
+    if (nullptr == this->mainWindow){
         SDL_Quit();
-        windowInitialized = false;
-        logger.error("Failed to initialize window %s", SDL_GetError());
+        this->windowInitialized = false;
+        logger.error("Failed to initialize window. SDL Error: %s", SDL_GetError());
     }
-    else windowInitialized = true;
+    else this->windowInitialized = true;
 }
 
 void MainWindow::initRenderer(){
     logger.debug("Initializing MainWindow Renderer");
-    mainWindowRenderer = SDL_CreateRenderer(mainWindow, -1,
+    mainWindowRenderer = SDL_CreateRenderer(this->mainWindow, -1,
                                   SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (nullptr == mainWindowRenderer){
-        windowInitialized = false;
+        this->windowInitialized = false;
         SDL_DestroyWindow(mainWindow);
-        logger.error("Failed to initialize renderer: %s", SDL_GetError());
+        logger.error("Failed to initialize renderer. SDL Error: %s", SDL_GetError());
     }
 }
 
 void MainWindow::setResolution(const int width, const int height){
     logger.debug("Changing resolution");
     if(width <= 0 || height <= 0){
-        logger.error("Unable to change resolution %dx%d" ,width ,height);
+        logger.error("Unable to change resolution %dx%d. Error: Invalid values" ,width ,height);
         return;
     }
     SDL_SetWindowSize(this->mainWindow, width, height);
     if(nullptr == this->mainWindow){
         windowInitialized = false;
-        logger.error("Failed to change resolution %s", SDL_GetError());
+        logger.error("Failed to change resolution to %dx%d. SDL Error: %s", width, height, SDL_GetError());
     }
 }
 
+/**
+ * Puts current resolution in int pointers.
+ */
 void MainWindow::getResolution(int* width, int* height) {
     SDL_GetWindowSize(this->mainWindow, width, height);
 }
-
 
 
 /**

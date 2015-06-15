@@ -16,7 +16,7 @@ ImageLoader::ImageLoader(std::string file, std::string path, SDL_PixelFormat* pi
     if(success){
         optimizedSurface = SDL_ConvertSurface(loadedSurface, pixelFormat, 0);
         if(optimizedSurface == nullptr){ //If we didn't optimize surface
-            logger.error("Failed to optimize image: %s", SDL_GetError());
+            logger.error("Failed to optimize image. SDL Error: %s", SDL_GetError());
             optimizedSurface = loadedSurface; //Use original surface.
         }
         else{//Surface is successfully optimized. We can free original.
@@ -28,7 +28,7 @@ ImageLoader::ImageLoader(std::string file, std::string path, SDL_PixelFormat* pi
 ImageLoader::~ImageLoader() {
     if(optimizedSurface != nullptr)
         SDL_FreeSurface(optimizedSurface);
-    logger.debug("Destroying BitmapLoader");
+    logger.debug("ImageLoader destroyed");
 }
 
 void ImageLoader::loadImage(std::string file, std::string path) {
@@ -36,10 +36,12 @@ void ImageLoader::loadImage(std::string file, std::string path) {
     this->loadedSurface = IMG_Load(fullPath.c_str());
     success = true;
     if(this->loadedSurface == nullptr){
-        logger.error("Failed to load image %s", IMG_GetError());
+        logger.error("Failed to load image. SDL Error: %s", IMG_GetError());
         success = false;
     }
 }
+
+SDL_Surface* ImageLoader::getBitmap() {return optimizedSurface;}
 
 bool ImageLoader::imageLoaded() {return success;}
 

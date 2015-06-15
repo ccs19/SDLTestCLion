@@ -23,7 +23,7 @@ public:
     ImageLoader(std::string file,  std::string path, SDL_PixelFormat* pixelFormat);
     ImageLoader(std::string file, std::string path);
     ~ImageLoader();
-    SDL_Surface* getBitmap() {return optimizedSurface;}
+    SDL_Surface* getBitmap();
     bool imageLoaded();
 
 };

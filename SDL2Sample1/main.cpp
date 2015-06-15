@@ -14,12 +14,12 @@ int main(int argc, char* args[])
     GameLoop* loop;
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        logger.error("SDL Failed to initialize. SDL Error: %s", SDL_GetError());
         return 1;
     }
     loop = new GameLoop();
 
-    logger.debug("Leaving main");
+    logger.debug("Exiting main");
     return 0;
 }
 
