@@ -6,7 +6,6 @@
 
 
 TextureLoader::TextureLoader(const std::string file, const std::string path, SDL_Renderer* renderer){
-
     logger.debug("Creating texture from file: %s%s", path.c_str(), file.c_str());
     ImageLoader image(file, path);
     if(image.imageLoaded()){
@@ -23,7 +22,8 @@ TextureLoader::TextureLoader(const std::string file, const std::string path, SDL
 }
 
 TextureLoader::~TextureLoader(){
-
+    logger.debug("Destroying texture");
+    SDL_free(loadedTexture);
 }
 
 bool TextureLoader::textureLoaded() {return success; }
