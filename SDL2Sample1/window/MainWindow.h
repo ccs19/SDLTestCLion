@@ -19,9 +19,6 @@ private:
     SDL_Surface *mainWindowSurface;
     bool windowInitialized;
 
-
-//Methods
-private:
     void initWindow(const char* title);
     void initRenderer();
 
@@ -29,12 +26,10 @@ public:
     MainWindow(const char* title);
     ~MainWindow();
 
-
-
-    SDL_Window* getWindow()  { return this->mainWindow;}
-    SDL_Renderer* getRenderer()  {return this->mainWindowRenderer;}
-    SDL_Surface* getSurface() {return this->mainWindowSurface;};
-    bool isInitialized() const {return this->windowInitialized;}
+    SDL_Window* getWindow();
+    SDL_Renderer* getRenderer();
+    SDL_Surface* getSurface();
+    bool isInitialized();
 
     //Resolution
     void getResolution(int* w, int* h);

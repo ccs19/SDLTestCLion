@@ -62,14 +62,23 @@ void MainWindow::getResolution(int* width, int* height) {
     SDL_GetWindowSize(this->mainWindow, width, height);
 }
 
+
+
 /**
  * 0 - Windowed
  * SDL_WINDOW_FULLSCREEN - True full screen
  * SDL_WINDOW_FULLSCREEN_DESKTOP - Full screen window
  */
-void MainWindow::setFullscreen(const Uint32 flag) {
-    SDL_SetWindowFullscreen(this->mainWindow, flag);
+void MainWindow::setFullscreen(const Uint32 flag) { SDL_SetWindowFullscreen(this->mainWindow, flag);
 }
+
+SDL_Renderer* MainWindow::getRenderer(){return mainWindowRenderer;}
+
+SDL_Window* MainWindow::getWindow(){return mainWindow;}
+
+bool MainWindow::isInitialized(){return windowInitialized;}
+
+SDL_Surface* MainWindow::getSurface(){return mainWindowSurface;}
 
 
 
