@@ -13,15 +13,19 @@ TextureLoader::TextureLoader(const std::string file, const std::string path, SDL
         loadedTexture = SDL_CreateTextureFromSurface(renderer, image.getBitmap());
         if(loadedTexture == nullptr){
             logger.error("Failed to create texture %s%s. Error: %s", path.c_str(), file.c_str(), SDL_GetError());
+            success = false;
         }
     }
     else{ //We couldn't load the texture because image loading failed
         logger.error("Texture Failed to load because image file %s%s couldn't be loaded", path.c_str(), file.c_str());
+        success = false;
     }
 }
 
 TextureLoader::~TextureLoader(){
 
 }
+
+bool TextureLoader::textureLoaded() {return success; }
 
 SDL_Texture* TextureLoader::getTexture(){ return loadedTexture; }

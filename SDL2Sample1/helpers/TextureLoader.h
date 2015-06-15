@@ -14,7 +14,7 @@ class TextureLoader {
 private:
     getLog("TextureLoader")
     SDL_Texture *loadedTexture;
-    bool success;
+    bool success = true;
     void loadTexture(std::string file, std::string path);
     ~TextureLoader();
 
