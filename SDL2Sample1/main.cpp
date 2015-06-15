@@ -5,17 +5,12 @@
 #include "log4cpp/PropertyConfigurator.hh"
 #include <thread>
 
-int threadTest(GameLoop* loop){
-    std::cout << "This is a thread";
-    SDL_Delay(5000);
-    loop->quitGame(true);
-}
+
 
 int main(int argc, char* args[])
 {
     log4cpp::PropertyConfigurator::configure(LOGGER_PROPERTIES);
     getLog("main");
-    logger.debug("Do it wekred?");
     GameLoop* loop;
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {

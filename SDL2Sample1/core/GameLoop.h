@@ -7,7 +7,6 @@
 
 #include "../utility/common.h"
 #include "../window/MainWindow.h"
-#include "../helpers/BitmapLoader.h"
 #include <mutex>
 
 class MainWindow;
@@ -16,10 +15,15 @@ class GameLoop {
 private:
     getLog("GameLoop")
     bool quit;
-    std::mutex quitLock;
+
+
+    ~GameLoop();
+    void handleEvent(const SDL_Event &event);
+
 
 public:
     GameLoop();
+
 
     //Setter to quit game
     void quitGame(bool quitGame);

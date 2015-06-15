@@ -9,6 +9,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "ResPath.h"
+#include <SDL2/SDL_Image.h>
 /***************/
 
 /**Logging libs**/
