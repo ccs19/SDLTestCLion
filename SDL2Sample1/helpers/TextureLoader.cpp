@@ -23,7 +23,7 @@ TextureLoader::TextureLoader(const std::string file, const std::string path, SDL
 
 TextureLoader::~TextureLoader(){
     logger.debug("Destroying texture");
-    SDL_free(loadedTexture);
+    SDL_DestroyTexture(loadedTexture);
 }
 
 bool TextureLoader::textureLoaded() {return success; }
