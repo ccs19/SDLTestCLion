@@ -10,6 +10,7 @@ namespace GameConfig{
     //getLog("GameConfig")
     static int screenWidth = 640;
     static int screenHeight = 480;
+    static SDL_Renderer* mainWindowRenderer = nullptr;
 
     void setScreenWidth(int width){screenWidth = width;}
 

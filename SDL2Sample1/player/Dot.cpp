@@ -8,6 +8,7 @@
 Dot::Dot(){
     logger.debug("Creating Dot");
     mPosX = mPosY = mVelX = mVelY = 0; //Init speed and screen offsets
+    dot = new TextureLoader("dot.bmp", ResPath::getBitmapPath());
 }
 
 Dot::~Dot(){
@@ -51,9 +52,9 @@ void Dot::handleEvent(SDL_Event &e){
     }
 }
 
-void Dot::render() {
-
-}
+//void Dot::render() {
+  //  dot.getTexture();
+//}
 
 void Dot::move() {
     //Move the dot left or right

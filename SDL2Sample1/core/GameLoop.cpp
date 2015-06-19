@@ -29,12 +29,12 @@ GameLoop::GameLoop(){
         }
 
 
-         SDL_SetRenderDrawColor(mainWindow.getRenderer(), 0xff, 0xff, 0xff, 0xff);
-         SDL_RenderClear(mainWindow.getRenderer());
+         SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0xff, 0xff, 0xff);
+         SDL_RenderClear(WindowGlobals::getRenderer());
          SDL_Rect fillRect = {screen_x/4, screen_y/4, screen_x/2, screen_y/2};
-         SDL_SetRenderDrawColor(mainWindow.getRenderer(), 0xff, 0, 0, 0xff);
-         SDL_RenderFillRect(mainWindow.getRenderer(), &fillRect);
-         SDL_RenderPresent(mainWindow.getRenderer());
+         SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0, 0, 0xff);
+         SDL_RenderFillRect(WindowGlobals::getRenderer(), &fillRect);
+         SDL_RenderPresent(WindowGlobals::getRenderer());
 
         /**SDL_RenderClear(mainWindow.getRenderer());
         SDL_RenderCopy(mainWindow.getRenderer(), texture.getTexture(), NULL, NULL);

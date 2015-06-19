@@ -51,7 +51,9 @@ void MainWindow::initRenderer(SDL_Color* color){
         //Draw color
         //Renderer, R, G, B, A
         SDL_SetRenderDrawColor(this->mainWindowRenderer, color->r, color->g, color->b, color->a);
+        WindowGlobals::setRenderer(mainWindowRenderer);
     }
+
 }
 
 void MainWindow::setResolution(const int width, const int height){
@@ -83,16 +85,25 @@ void MainWindow::getResolution(int* width, int* height) {
  * SDL_WINDOW_FULLSCREEN - True full screen
  * SDL_WINDOW_FULLSCREEN_DESKTOP - Full screen window
  */
-void MainWindow::setFullscreen(const Uint32 flag) { SDL_SetWindowFullscreen(this->mainWindow, flag);
-}
-
-SDL_Renderer* MainWindow::getRenderer(){return mainWindowRenderer;}
+void MainWindow::setFullscreen(const Uint32 flag) { SDL_SetWindowFullscreen(this->mainWindow, flag);}
 
 SDL_Window* MainWindow::getWindow(){return mainWindow;}
 
 bool MainWindow::isInitialized(){return windowInitialized;}
 
 SDL_Surface* MainWindow::getSurface(){return mainWindowSurface;}
+
+
+/**
+ * Main window globals. Things we may need all over the program, e.g. the Renderer is used
+ * to initialize several SDL objects including SDL_Textures.
+ */
+namespace WindowGlobals{
+    SDL_Renderer* mainWindowRenderer;
+
+    SDL_Renderer* getRenderer(){return mainWindowRenderer;}
+    void setRenderer(SDL_Renderer* renderer){mainWindowRenderer = renderer;}
+}
 
 
 

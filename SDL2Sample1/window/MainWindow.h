@@ -7,6 +7,9 @@
 
 #include "../utility/common.h"
 #include "../core/GameLoop.h"
+#include "RenderObject.h"
+
+
 
 
 class GameLoop;
@@ -37,5 +40,16 @@ public:
     void setResolution(const int w, const int h);
     void setFullscreen(const Uint32 flag);
 
+    //Render!
+    void renderScreen();
+    void addRenderObject(RenderObject* renderObject);
+
+
 };
+
+namespace WindowGlobals{
+    SDL_Renderer* getRenderer();
+    void setRenderer(SDL_Renderer* renderer);
+};
+
 #endif //SDLTESTCLION_MAINWINDOW_H

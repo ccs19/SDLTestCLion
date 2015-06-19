@@ -3,14 +3,15 @@
 //
 
 #include "TextureLoader.h"
+#include "../window/MainWindow.h"
 
 
-TextureLoader::TextureLoader(const std::string file, const std::string path, SDL_Renderer* renderer){
+TextureLoader::TextureLoader(const std::string file, const std::string path){
     success = true;
     logger.debug("Creating texture from file: %s%s", path.c_str(), file.c_str());
     ImageLoader image(file, path);
     if(image.imageLoaded()){
-        loadedTexture = SDL_CreateTextureFromSurface(renderer, image.getSurface());
+        loadedTexture = SDL_CreateTextureFromSurface(WindowGlobals::getRenderer(), image.getSurface());
         if(loadedTexture == nullptr){
             logger.error("Failed to create texture %s%s. SDL Error: %s", path.c_str(), file.c_str(), SDL_GetError());
             success = false;

@@ -6,9 +6,10 @@
 #define SDLTESTCLION_DOT_H
 
 #include "../utility/common.h"
+#include "../helpers/TextureLoader.h"
+#include "../window/RenderObject.h"
 
-
-class Dot {
+class Dot : public RenderObject {
 public:
     //The dimensions of the dot
     static const int DOT_WIDTH = 20;
@@ -27,14 +28,12 @@ public:
     //Moves the dot
     void move();
 
-    //Shows the dot on the screen
-    void render();
 
 private:
     //Logger
     getLog("Dot");
 
-
+    TextureLoader* dot;
     //The X and Y offsets of the dot
     int mPosX, mPosY;
 
@@ -48,8 +47,6 @@ private:
         left = SDLK_a,
         right = SDLK_d
     };
-
-
 
 };
 

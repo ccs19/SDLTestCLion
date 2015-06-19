@@ -15,7 +15,7 @@ namespace GameConfig {
         int getScreenWidth();
 
         int getScreenHeight();
-}
+};
 
 
 #endif //SDLTESTCLION_CONFIG_SETTINGS_H

@@ -19,7 +19,7 @@ private:
 
 
 public:
-    TextureLoader(std::string file, std::string path, SDL_Renderer* renderer);
+    TextureLoader(std::string file, std::string path);
     ~TextureLoader();
     bool textureLoaded();
     SDL_Texture* getTexture();

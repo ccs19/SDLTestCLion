@@ -25,7 +25,7 @@ main.cpp
 utility/resource_path.h utility/resource_path_template.h
 helpers/TextureLoader.cpp helpers/TextureLoader.h
 player/Dot.cpp player/Dot.h
-settings/GameConfig.cpp settings/GameConfig.h)
+settings/GameConfig.cpp settings/GameConfig.h window/RenderObject.cpp window/RenderObject.h)
 
 IF(WIN32)
 ELSE()
