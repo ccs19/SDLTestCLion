@@ -139,8 +139,14 @@ bool MainWindow::removeRenderObject(RenderObject *renderObject) {
  * add an object to be rendered
  */
 void MainWindow::addRenderObject(RenderObject *renderObject) {
-    logger.debug("Adding %x to renderer", renderObject);
-    renderObjects.push_back(renderObject);
+    if(renderObject == nullptr){
+        logger.debug("Cannot add %x to renderer. Object is null.", renderObject);
+    }
+    else{
+        logger.debug("Adding %x to renderer", renderObject);
+        renderObjects.push_back(renderObject);
+    }
+
 }
 
 /**

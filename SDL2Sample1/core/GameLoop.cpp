@@ -19,8 +19,7 @@ GameLoop::GameLoop(){
     TextureLoader texture("hello_world.bmp", ResPath::getBitmapPath());
     mainWindow.addRenderObject(&texture);
     SDL_Event event;
-    int screen_x, screen_y;
-    mainWindow.getResolution(&screen_x, &screen_y);
+    int x = 0;
 
      while(!quit){
         while(SDL_PollEvent(&event) != 0) {
@@ -29,19 +28,17 @@ GameLoop::GameLoop(){
             }
         }
 
-
-  /**       SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0xff, 0xff, 0xff);
-         SDL_RenderClear(WindowGlobals::getRenderer());
-         SDL_Rect fillRect = {screen_x/4, screen_y/4, screen_x/2, screen_y/2};
-         SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0, 0, 0xff);
-         SDL_RenderFillRect(WindowGlobals::getRenderer(), &fillRect);
-         SDL_RenderPresent(WindowGlobals::getRenderer());**/
-
         mainWindow.renderScreen();
-
-        /**SDL_BlitSurface(bmp.getSurface(), NULL, mainWindow.getSurface(), NULL);
-        SDL_UpdateWindowSurface(mainWindow.getWindow());**/
-
+         x++;
+         if(x % 5 == 0){
+             mainWindow.removeRenderObject(&texture);
+         }
+         if(x % 10 == 0){
+             mainWindow.addRenderObject(&texture);
+             mainWindow.removeRenderObject(nullptr);
+             mainWindow.addRenderObject(nullptr);
+         }
+         SDL_Delay(1000);
      }
 
      logger.debug("Exited GameLoop");
