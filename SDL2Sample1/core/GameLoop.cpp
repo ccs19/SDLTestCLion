@@ -16,7 +16,8 @@ GameLoop::GameLoop(){
      SDL_Color color{0xff, 0xff, 0xff, 0xff};
      mainWindow.initRenderer(&color);
     //ImageLoader bmp("hello_world.bmp", ResPath::getBitmapPath(), mainWindow.getSurface()->format);
-    //TextureLoader texture("hello_world.bmp", ResPath::getBitmapPath(), mainWindow.getRenderer());
+    TextureLoader texture("hello_world.bmp", ResPath::getBitmapPath());
+    mainWindow.addRenderObject(&texture);
     SDL_Event event;
     int screen_x, screen_y;
     mainWindow.getResolution(&screen_x, &screen_y);
@@ -29,16 +30,14 @@ GameLoop::GameLoop(){
         }
 
 
-         SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0xff, 0xff, 0xff);
+  /**       SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0xff, 0xff, 0xff);
          SDL_RenderClear(WindowGlobals::getRenderer());
          SDL_Rect fillRect = {screen_x/4, screen_y/4, screen_x/2, screen_y/2};
          SDL_SetRenderDrawColor(WindowGlobals::getRenderer(), 0xff, 0, 0, 0xff);
          SDL_RenderFillRect(WindowGlobals::getRenderer(), &fillRect);
-         SDL_RenderPresent(WindowGlobals::getRenderer());
+         SDL_RenderPresent(WindowGlobals::getRenderer());**/
 
-        /**SDL_RenderClear(mainWindow.getRenderer());
-        SDL_RenderCopy(mainWindow.getRenderer(), texture.getTexture(), NULL, NULL);
-        SDL_RenderPresent(mainWindow.getRenderer());**/
+        mainWindow.renderScreen();
 
         /**SDL_BlitSurface(bmp.getSurface(), NULL, mainWindow.getSurface(), NULL);
         SDL_UpdateWindowSurface(mainWindow.getWindow());**/

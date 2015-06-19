@@ -8,8 +8,9 @@
 
 #include "../utility/common.h"
 #include "ImageLoader.h"
+#include "../window/RenderObject.h"
 
-class TextureLoader {
+class TextureLoader : public RenderObject{
 
 private:
     getLog("TextureLoader")
@@ -23,6 +24,7 @@ public:
     ~TextureLoader();
     bool textureLoaded();
     SDL_Texture* getTexture();
+    void render(SDL_Renderer* renderer);
 };
 
 

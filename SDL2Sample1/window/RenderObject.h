@@ -6,15 +6,13 @@
 #define SDLTESTCLION_RENDEROBJECT_H
 
 
+#include <SDL2/SDL_render.h>
+
 class RenderObject {
 private:
-     unsigned long long int position; //Object's position in list for quick lookup
 
 public:
-
-     virtual void render() =0;
-     virtual int getArrayPosition(){return position;}
-     virtual void setArrayPosition(const unsigned long long int position){this->position = position;}
+     virtual void render(SDL_Renderer* renderer) =0;
 };
 
 

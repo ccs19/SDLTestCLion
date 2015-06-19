@@ -140,7 +140,6 @@ bool MainWindow::removeRenderObject(RenderObject *renderObject) {
  */
 void MainWindow::addRenderObject(RenderObject *renderObject) {
     logger.debug("Adding %x to renderer", renderObject);
-    renderObject->setArrayPosition(renderObjects.size());
     renderObjects.push_back(renderObject);
 }
 
@@ -148,7 +147,9 @@ void MainWindow::addRenderObject(RenderObject *renderObject) {
  * Render all objects in the RenderObject vector
  */
 void MainWindow::renderScreen() {
+    SDL_RenderClear(WindowGlobals::getRenderer());
     for(RenderObject* rObjects : renderObjects){
-        rObjects->render();
+        rObjects->render(WindowGlobals::getRenderer());
     }
+    SDL_RenderPresent(WindowGlobals::getRenderer());
 }

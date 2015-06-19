@@ -31,3 +31,7 @@ TextureLoader::~TextureLoader(){
 bool TextureLoader::textureLoaded() {return success; }
 
 SDL_Texture* TextureLoader::getTexture(){ return loadedTexture; }
+
+void TextureLoader::render(SDL_Renderer* renderer){
+    SDL_RenderCopy(renderer, loadedTexture, NULL, NULL);
+}
