@@ -19,7 +19,13 @@ ENDIF()
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "C:\\Users\\Chris\\ClionProjects\\SDLTestCLion\\output")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_executable(SDLTestCLion ${SOURCE_FILES}  utility/common.h helpers/ImageLoader.h helpers/ImageLoader.cpp
-core/GameLoop.cpp core/GameLoop.h window/MainWindow.cpp window/MainWindow.h core/EventHandler.cpp core/EventHandler.h main.cpp utility/resource_path.h utility/resource_path_template.h helpers/TextureLoader.cpp helpers/TextureLoader.h)
+core/GameLoop.cpp core/GameLoop.h window/MainWindow.cpp window/MainWindow.h
+core/EventHandler.cpp core/EventHandler.h
+main.cpp
+utility/resource_path.h utility/resource_path_template.h
+helpers/TextureLoader.cpp helpers/TextureLoader.h
+player/Dot.cpp player/Dot.h
+settings/GameConfig.cpp settings/GameConfig.h)
 
 IF(WIN32)
 ELSE()

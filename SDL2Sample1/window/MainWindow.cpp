@@ -25,7 +25,8 @@ MainWindow::~MainWindow(){
 
 void MainWindow::initWindow(const char* title){
     logger.debug("Initializing MainWindow");
-    mainWindow = SDL_CreateWindow(title, 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+    mainWindow = SDL_CreateWindow(title, 100, 100, GameConfig::getScreenWidth(),
+            GameConfig::getScreenHeight(), SDL_WINDOW_SHOWN);
     if (nullptr == this->mainWindow){
         SDL_Quit();
         this->windowInitialized = false;

@@ -8,8 +8,12 @@
 /**Common libs**/
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "ResPath.h"
 #include <SDL2/SDL_Image.h>
+/***************/
+
+/**My classes**/
+#include "ResPath.h"
+#include "../settings/GameConfig.h"
 /***************/
 
 /**Logging libs**/
