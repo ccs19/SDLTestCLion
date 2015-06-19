@@ -3,17 +3,38 @@
 //
 
 #include "MainWindow.h"
+#include <algorithm>
 
-getLog("MainWindow")
+
+/**
+ * Main window globals. Things we may need all over the program, e.g. the Renderer is used
+ * to initialize several SDL objects including SDL_Textures.
+ */
+namespace WindowGlobals{
+    SDL_Renderer* mainWindowRenderer;
+    SDL_Renderer* getRenderer(){return mainWindowRenderer;}
+    void setRenderer(SDL_Renderer* renderer){mainWindowRenderer = renderer;}
+}
+
+/**
+ * title: Name of window
+ */
 MainWindow::MainWindow(const char* title){
     initWindow(title);
     this->mainWindowRenderer = nullptr;
     mainWindowSurface = SDL_GetWindowSurface(mainWindow);
 }
 
+/**
+ * Destructor
+ */
 MainWindow::~MainWindow(){
     SDL_DestroyWindow(mainWindow);
-    if(mainWindowRenderer != nullptr)SDL_DestroyRenderer(mainWindowRenderer);
+    if(mainWindowRenderer != nullptr) {
+        logger.debug("Destroying renderer");
+        SDL_DestroyRenderer(mainWindowRenderer);
+        logger.debug("Renderer successfully destroyed");
+    }
     IMG_Quit();
     SDL_Quit();
     mainWindow = nullptr;
@@ -22,6 +43,7 @@ MainWindow::~MainWindow(){
     windowInitialized = false;
     logger.debug("MainWindow destroyed");
 }
+
 
 void MainWindow::initWindow(const char* title){
     logger.debug("Initializing MainWindow");
@@ -33,6 +55,7 @@ void MainWindow::initWindow(const char* title){
         logger.error("Failed to initialize window. SDL Error: %s", SDL_GetError());
     }
     else this->windowInitialized = true;
+    logger.debug("MainWindow successfully initialized");
 }
 
 /**
@@ -53,9 +76,12 @@ void MainWindow::initRenderer(SDL_Color* color){
         SDL_SetRenderDrawColor(this->mainWindowRenderer, color->r, color->g, color->b, color->a);
         WindowGlobals::setRenderer(mainWindowRenderer);
     }
-
+    logger.debug("Renderer successfully initialized");
 }
 
+/**
+ * Set desired screen resolution
+ */
 void MainWindow::setResolution(const int width, const int height){
     logger.debug("Changing resolution");
     if(width <= 0 || height <= 0){
@@ -86,25 +112,43 @@ void MainWindow::getResolution(int* width, int* height) {
  * SDL_WINDOW_FULLSCREEN_DESKTOP - Full screen window
  */
 void MainWindow::setFullscreen(const Uint32 flag) { SDL_SetWindowFullscreen(this->mainWindow, flag);}
-
 SDL_Window* MainWindow::getWindow(){return mainWindow;}
-
 bool MainWindow::isInitialized(){return windowInitialized;}
-
 SDL_Surface* MainWindow::getSurface(){return mainWindowSurface;}
 
 
 /**
- * Main window globals. Things we may need all over the program, e.g. the Renderer is used
- * to initialize several SDL objects including SDL_Textures.
+ * Remove an object to be rendered
  */
-namespace WindowGlobals{
-    SDL_Renderer* mainWindowRenderer;
+bool MainWindow::removeRenderObject(RenderObject *renderObject) {
+    logger.debug("Removing %x from renderer", renderObject);
+    auto position = find(renderObjects.begin(), renderObjects.end(), renderObject);
+    if(position != renderObjects.end()){
+        renderObjects.erase(position);
+        logger.debug("Removed %x from renderer", renderObject);
+        return true;
+    }
+    else{
+        logger.debug("Unable to remove %x from renderer. Not found", renderObject);
+        return false;
+    }
 
-    SDL_Renderer* getRenderer(){return mainWindowRenderer;}
-    void setRenderer(SDL_Renderer* renderer){mainWindowRenderer = renderer;}
 }
 
+/**
+ * add an object to be rendered
+ */
+void MainWindow::addRenderObject(RenderObject *renderObject) {
+    logger.debug("Adding %x to renderer", renderObject);
+    renderObject->setArrayPosition(renderObjects.size());
+    renderObjects.push_back(renderObject);
+}
 
-
-
+/**
+ * Render all objects in the RenderObject vector
+ */
+void MainWindow::renderScreen() {
+    for(RenderObject* rObjects : renderObjects){
+        rObjects->render();
+    }
+}

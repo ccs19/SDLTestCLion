@@ -21,6 +21,8 @@ private:
     SDL_Renderer *mainWindowRenderer;
     SDL_Surface *mainWindowSurface;
     bool windowInitialized;
+    std::vector<RenderObject*> renderObjects;
+    getLog("MainWindow")
 
     void initWindow(const char* title);
 
@@ -43,7 +45,7 @@ public:
     //Render!
     void renderScreen();
     void addRenderObject(RenderObject* renderObject);
-
+    bool removeRenderObject(RenderObject* renderObject);
 
 };
 
